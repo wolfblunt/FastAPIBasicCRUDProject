@@ -24,8 +24,6 @@ client = motor.motor_asyncio.AsyncIOMotorClient(
 db = client.library
 student_collection = db.get_collection("students")
 
-# Represents an ObjectId field in the database.
-# It will be represented as a `str` on the model so that it can be serialized to JSON.
 PyObjectId = Annotated[str, BeforeValidator(str)]
 
 
@@ -36,9 +34,8 @@ class Address(BaseModel):
 
 class StudentModel(BaseModel):
     """
-    Container for a single student record.
+    SStructure for a single student record.
     """
-    # id: Optional[PyObjectId] = Field(alias="_id", default=None)
     id: str = uuid4().hex
     name: str = Field(...)
     age: int = Field(...)
@@ -60,17 +57,9 @@ class StudentModel(BaseModel):
 
 
 class UpdateStudentModel(BaseModel):
-    """
-    A set of optional updates to be made to a document in the database.
-    """
-
     name: Optional[str] = None
     age: Optional[int] = None
-    # address: Optional[dict] = None
-    # city: Optional[str] = None
-    # country: Optional[str] = None
     address: Optional[dict] = None
-    # address: Optional[Address] = None
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         json_encoders={ObjectId: str},
@@ -94,7 +83,6 @@ class StudentCollection(BaseModel):
 @app.post(
     "/students/",
     response_description="Add new student",
-    # response_model=StudentModel,
     status_code=status.HTTP_201_CREATED,
     response_model_by_alias=False,
 )
@@ -166,7 +154,6 @@ async def show_student(id: str):
 @app.patch(
     "/students/{id}",
     response_description="Update a student",
-    # response_model=StudentModel,
     response_model_by_alias=False,
 )
 async def update_student(id: str, student: UpdateStudentModel = Body(...)):
