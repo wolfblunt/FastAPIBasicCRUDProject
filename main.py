@@ -5,7 +5,7 @@ from typing import Optional, List
 from fastapi import FastAPI, Body, HTTPException, status, Request
 # from fastapi.responses import Response
 from pydantic import ConfigDict, BaseModel, Field
-from pydantic.functional_validators import BeforeValidator
+# from pydantic.functional_validators import BeforeValidator
 
 from typing_extensions import Annotated
 
@@ -24,7 +24,7 @@ client = motor.motor_asyncio.AsyncIOMotorClient(
 db = client.library
 student_collection = db.get_collection("students")
 
-PyObjectId = Annotated[str, BeforeValidator(str)]
+# PyObjectId = Annotated[str, BeforeValidator(str)]
 
 
 class Address(BaseModel):
