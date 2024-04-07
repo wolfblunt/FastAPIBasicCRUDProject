@@ -3,8 +3,8 @@ import os
 from typing import Optional, List
 
 from fastapi import FastAPI, Body, HTTPException, status, Request
-from fastapi.responses import Response
-from pydantic import ConfigDict, BaseModel, Field, EmailStr
+# from fastapi.responses import Response
+from pydantic import ConfigDict, BaseModel, Field
 from pydantic.functional_validators import BeforeValidator
 
 from typing_extensions import Annotated
