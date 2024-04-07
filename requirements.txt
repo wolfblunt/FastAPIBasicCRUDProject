@@ -1,0 +1,10 @@
+fastapi
+motor
+uvicorn
+pydantic
+uuid
+bson
+pymongo
+motor
+typing-extensions
+typing
