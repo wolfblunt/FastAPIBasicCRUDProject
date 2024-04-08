@@ -12,6 +12,7 @@ from typing_extensions import Annotated
 from bson import ObjectId
 import motor.motor_asyncio
 from pymongo import ReturnDocument
+# from pymongo.objectid import ObjectId
 from uuid import uuid4
 
 app = FastAPI(
@@ -99,6 +100,7 @@ async def create_student(student: StudentModel = Body(...)):
     if stud_detail:
         response["response"] = "Record already exist"
     else:
+        student.id = uuid4().hex
         new_student = await student_collection.insert_one(
             student.model_dump(by_alias=True, exclude=["_id"])
         )
@@ -132,7 +134,7 @@ async def list_students(request: Request):
     if age is not None:
         student_list = [student for student in student_list if int(student["age"]) >= int(age)]
 
-    response = {"response": student_list}
+    response = {"data": student_list}
     return response
 
 
