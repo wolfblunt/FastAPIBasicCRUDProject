@@ -22,16 +22,16 @@ The application will start and be available at http://localhost:8000.
 
 ## API Endpoints
 
-### Retrieve a list of users:
+### Retrieve a list of students:
 
 ```http
-GET /users
+GET /students
 ```
 
-Returns a list of all users in the system:
+Returns a list of all students in the system:
 
 ```console
-curl http://localhost:8000/users/ -H "Accept: application/json"
+curl http://localhost:8000/students/ -H "Accept: application/json"
 ```
 Response:
 
@@ -73,12 +73,12 @@ Response:
 ### Retrieve details for a specific user:
 
 ```http
-GET /users/{user_id}
+GET /students/{user_id}
 ```
 Returns details for a specific user with the given user_id:
 
 ```console
-curl http://localhost:8000/users/95f3bee04dad487eb54ae61a457201ea -H "Accept: application/json"
+curl http://localhost:8000/students/95f3bee04dad487eb54ae61a457201ea -H "Accept: application/json"
 ```
 Response:
 ```json
@@ -97,7 +97,7 @@ Response:
 ### Add a new user
 
 ```http
-POST /users
+POST /students
 ```
 
 API to create a student in the system. All fields are mandatory and required while creating the student in the system.
@@ -107,7 +107,7 @@ API to create a student in the system. All fields are mandatory and required whi
   - `address` (string, required): the address for the user which includes city and country.
 
 ```console
-curl -X POST http://localhost:8000/users/
+curl -X POST http://localhost:8000/students/
    -H 'Content-Type: application/json'
    -d '{
     "age": 31,
@@ -130,7 +130,7 @@ Response:
 
 ### Update an existing user
 ```http
-PATCH /users/{user_id}
+PATCH /students/{user_id}
 ```
 
 Updates an existing user with the given user_id. The request body should include a JSON object with the following properties:
@@ -141,7 +141,7 @@ Updates an existing user with the given user_id. The request body should include
   -  `country` (string): the new country for the user
 
 ```console
-curl -X PUT http://localhost:8000/users/1
+curl -X PUT http://localhost:8000/students/95f3bee04dad487eb54ae61a457201ea
      -H "Accept: application/json"
      -d '{"age": 24, "address":{"city": "Jaipur"}}'
 ```
@@ -153,7 +153,7 @@ Response:
 ### Delete a user
 
 ```http
-DELETE /users/{user_id}
+DELETE /students/{user_id}
 ```
 
 Deletes the user with the given user_id:
