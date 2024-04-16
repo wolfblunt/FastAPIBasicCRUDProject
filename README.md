@@ -2,7 +2,7 @@
 
 ## My Awesome FastAPI Project
 
-This is a simple REST API built with Python and FastAPI and SQLAlchemy for CRUD operations (Create, Read, Update, Delete) on Students.
+This is a simple REST API built with Python and FastAPI and MongoDB for CRUD operations (Create, Read, Update, Delete) on Students.
 FastAPI is a powerful web framework for building APIs.
 
 Install the project dependencies:
